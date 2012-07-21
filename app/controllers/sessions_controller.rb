@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
     redirect_to root_url, :notice => "Signed out!"
   end
   
+  #temporary
   def index
-    @users = User.all
   end
 end
