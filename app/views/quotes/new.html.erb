@@ -1,5 +1,9 @@
 <h1>New quote</h1>
+ <% if current_user %>
+	<%= render 'form' %>
+	<%= link_to 'Back', quotes_path %>
+ <% else %>	
+	<%= link_to "Sign in to add a quote!", "/auth/twitter" %>
+ <% end %>	
 
-<%= render 'form' %>
 
-<%= link_to 'Back', quotes_path %>
