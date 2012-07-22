@@ -5,6 +5,7 @@ Quotable::Application.routes.draw do
 
   resources :quotes do  
     resources :tags
+    resources :likes
   end
 
 end

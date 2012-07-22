@@ -4,8 +4,8 @@
   <tr>
     <th>Text</th>
     <th>Author</th>
-    <th></th>
-    <th></th>
+    <th>Tags</th>
+    <th>Likes</th>
     <th></th>
   </tr>
 
@@ -13,6 +13,8 @@
   <tr>
     <td><%= quote.text %></td>
     <td><%= quote.author %></td>
+	<td><%= quote.tags.first.text unless quote.tags.empty? %></td>
+	<td><%= quote.likes.count %><td>
     <td><%= link_to 'Show', quote %></td>
     <td><%= link_to 'Edit', edit_quote_path(quote) %></td>
     <td><%= link_to 'Destroy', quote, method: :delete, data: { confirm: 'Are you sure?' } %></td>

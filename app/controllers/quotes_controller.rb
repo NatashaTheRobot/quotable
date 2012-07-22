@@ -25,7 +25,7 @@ class QuotesController < ApplicationController
   # GET /quotes/new.json
   def new
     @quote = Quote.new
-
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @quote }
@@ -40,10 +40,11 @@ class QuotesController < ApplicationController
   # POST /quotes
   # POST /quotes.json
   def create
-    @quote = Quote.new(params[:quote])
+    @user = current_user
+    @quote = @user.quotes.create(params[:quote])
 
     respond_to do |format|
-      if @quote.save
+      if @quote
         format.html { redirect_to @quote, notice: 'Quote was successfully created.' }
         format.json { render json: @quote, status: :created, location: @quote }
       else

@@ -1,10 +1,3 @@
-class Quote < ActiveRecord::Base
-  attr_accessible :author, :text
-  validates_presence_of :text
-  belongs_to :user
-  has_many :tags
-  has_many :likes
-end
 # == Schema Information
 #
 # Table name: quotes
@@ -16,4 +9,13 @@ end
 #  created_at :datetime        not null
 #  updated_at :datetime        not null
 #
+
+class Quote < ActiveRecord::Base
+  attr_accessible :author, :text
+  validates_presence_of :text
+  belongs_to :user
+  has_many :tags, dependent: :destroy
+  has_many :likes, dependent: :destroy
+end
+
 

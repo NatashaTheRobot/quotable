@@ -1,8 +1,3 @@
-class Tag < ActiveRecord::Base
-  attr_accessible :text
-  validates_presence_of :text
-  belongs_to :quote
-end
 # == Schema Information
 #
 # Table name: tags
@@ -13,4 +8,11 @@ end
 #  created_at :datetime        not null
 #  updated_at :datetime        not null
 #
+
+
+class Tag < ActiveRecord::Base
+  attr_accessible :text
+  validates_presence_of :text
+  belongs_to :quote
+end
 
