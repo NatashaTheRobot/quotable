@@ -41,7 +41,26 @@ class QuotesController < ApplicationController
   # POST /quotes.json
   def create
     @user = current_user
-    @quote = @user.quotes.create(params[:quote])
+    #quote_options = params[:quote]
+    #tags_string = quote_options.delete(:tags)
+    
+    #@quote = @user.quotes.create(quote_options)
+    
+    #save the tags for the quote
+    #if @quote
+    #  puts "not working!"
+    #  tags = Tag.tags_array(tags_string)
+    #  tags.each { |tag| @quote.tags.create(:text => tag)}
+    #end
+    
+    @quote = Quote.new
+    @quote.user = @user
+    options = params[:quote]
+    p options
+    @quote.text = options[:text]
+    @quote.author = options[:author]
+    @quote.tags = Tag.tags_array(options[:tags])
+    @quote.save
 
     respond_to do |format|
       if @quote

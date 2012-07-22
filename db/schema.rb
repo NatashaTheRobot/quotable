@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120721225122) do
+ActiveRecord::Schema.define(:version => 20120722172408) do
 
   create_table "likes", :force => true do |t|
     t.integer  "user_id"
@@ -28,9 +28,15 @@ ActiveRecord::Schema.define(:version => 20120721225122) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "quotes_tags", :id => false, :force => true do |t|
+    t.integer "quote_id", :null => false
+    t.integer "tag_id",   :null => false
+  end
+
+  add_index "quotes_tags", ["quote_id", "tag_id"], :name => "index_quotes_tags_on_quote_id_and_tag_id", :unique => true
+
   create_table "tags", :force => true do |t|
     t.string   "text",       :null => false
-    t.integer  "quote_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

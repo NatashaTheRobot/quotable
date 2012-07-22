@@ -14,8 +14,9 @@ class Quote < ActiveRecord::Base
   attr_accessible :author, :text
   validates_presence_of :text
   belongs_to :user
-  has_many :tags, dependent: :destroy
+  has_and_belongs_to_many :tags
   has_many :likes, dependent: :destroy
+  
 end
 
 

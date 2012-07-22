@@ -13,6 +13,13 @@
 class Tag < ActiveRecord::Base
   attr_accessible :text
   validates_presence_of :text
-  belongs_to :quote
+  has_and_belongs_to_many :quotes
+  
+  def self.tags_array(tags_string)
+    string = tags_string.downcase
+    tags_array = string.split(',')
+    tags_array.collect { |tag| Tag.new(:text => tag.strip)}
+  end
+  
 end
 
